@@ -133,11 +133,12 @@ for(i in 1:rows){
   
 ```
 
-3.6. This transformation aims to create a new independent tidy dataset from the previous one, containing the average of each variable for each activity and each subject. We are using the default melt function, since just three columns are required to the project:
+3.6. This transformation aims to create a new independent tidy dataset from the previous one, containing the average of each variable for each activity and each subject. We jusp dropped the last column, since just three columns are required to the project:
 
 ```{r}
 
-tidy_data <- melt(merged_train_test, id=c("Activity", "Subject", "Mean"))
+merged_train_test$"Standard Deviation" <- NULL
+tidy_data <- merged_train_test
   
 ```
 

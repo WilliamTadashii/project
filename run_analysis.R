@@ -87,10 +87,10 @@ ra <- function(){
   
   # STEP 4.2 - Changing the numbers for names
   # Objective: Change the numbers for their respectives activities names
-  
+ 
   for(i in 1:rows){
     # We really do not need this next line, but it makes the code clear and safe
-    activity <- descriptive_names[merged_train_test[i,1]]
+    activity <- descriptive_names[as.numeric(merged_train_test[i,1])]
     merged_train_test[i,1] <- activity
   }
   
@@ -102,7 +102,9 @@ ra <- function(){
   # Objective: Create a R data structure with the new requirements. We are using the default melt
   # function, since just three columns are required to the project.
     
-  tidy_data <- melt(merged_train_test, id=c("Activity", "Subject", "Mean"))
+  #tidy_data <- melt(merged_train_test, id=c("Activity", "Subject", "Mean"))
+  merged_train_test$"Standard Deviation" <- NULL
+  tidy_data <- merged_train_test
 
   # STEP 5.2 - Writing to the file
   # Objective: Write the new independent tidy dataset to the TXT file
